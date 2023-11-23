@@ -11,10 +11,6 @@ INSERT into ESTUDIANTES(Nombre,Direccion)VALUES('Julian','San Marcos');
 INSERT into ESTUDIANTES(Nombre,Direccion)VALUES('Javier','Providencia');
 INSERT into ESTUDIANTES(Nombre,Direccion)VALUES('Choco','Manuel dublan');
 
-DROP table ESTUDIANTES;
-
-SELECT * FROM Estudiantes
-
 CREATE TABLE CURSOS (
 IDCURSO NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 NOMBRE VARCHAR2 (30) NOT NULL,
