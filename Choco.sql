@@ -26,7 +26,7 @@ precio NUMBER(5,2),
 stock NUMBER not null
 );
 
-INSERT INTO Productos(nombre,precio,stock) VALUES('Toalla de baño', 20.0,1);
+INSERT INTO Productos(nombre,precio,stock) VALUES('Toalla de baï¿½o', 20.0,1);
 INSERT INTO Productos(nombre,precio,stock) VALUES('Cuchillo', 100.0,2);
 INSERT INTO Productos(nombre,precio,stock) VALUES('Puerta', 300.0,1);
 
