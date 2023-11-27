@@ -1,3 +1,18 @@
+INSERT into Clientes(Nombre,Email,Direccion)Values('Oscar','Zam.gmail.com','San luis');
+INSERT into Clientes(Nombre,Email,Direccion)Values('Ximena','Xime.gmail.com','San Fernando');
+INSERT into Productos(Nombre,Precio,STOCK,CATE)Values('Papas',5,1,1);
+INSERT into Categorias(Nombre_Categoria)Values('Alimentos');
+
+Select * from clientes;
+Select * from productos,Categorias;
+Select * from clientes where Nombre='Ximena';
+Select * from clientes where (Nombre='Ximena' or Nombre='Oscar') and Direccion='San Luis';
+
+Select nombre ||',' || email from clientes  where (Nombre='Ximena' or Nombre='Oscar');
+
+--Alias
+Select nombre ||',' || email as NombreCompleto , direccion  Direccion from clientes  where (Nombre='Ximena' or Nombre='Oscar');
+
 CREATE table Clientes(
 Id_Clientes NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 Nombre VARCHAR2(30) NOT NULL,
