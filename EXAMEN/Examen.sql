@@ -1,9 +1,17 @@
+insert into CLIENTES (Nombre,Email,Direccion) VALUES ('Ximena','emailo@gmail.com','San Luis');
+insert into CATEGORIAS (Nombre_Categoria) VALUES ('Bebes');
+insert into PRODUCTOS (Nombre,Precio,STOCK,CATE) VALUES ('Shampoo',4,2,1);
+
+insert into CLIENTES (Nombre,Email,Direccion) VALUES ('Cristina','cristi@gmail.com','San Miguel');
 CREATE table Clientes(
 Id_Clientes NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 Nombre VARCHAR2(30) NOT NULL,
 Email VARCHAR2(30)NOT NULL,
 Direccion VARCHAR(30)NOT NULL
 );
+ 
+select * from productos,categorias;             
+//and direccion = 'San Miguel';
 
 CREATE table Categorias(
 Id_Categoria NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
