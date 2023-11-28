@@ -4,12 +4,17 @@ nombre VARCHAR(35),
 email VARCHAR(40),
 direccion VARCHAR(50)
 );
+INSERT INTO Cliente(nombre, email, direccion) values('Christofer','chooko162@gmail.com','Calle Abasolo No.202');
+INSERT INTO Cliente(nombre, email, direccion) values('Adri','Adri90@gmail.com','Colonia San Luis II');
+
+select * from Cliente where nombre='Christofer' or nombre='Adri';
 
 CREATE TABLE Categorias(
 id_categoria NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 nombre_categoria VARCHAR(25)
 );
-
+INSERT INTO Categorias(nombre_categoria)values('Lacteos');
+    
 CREATE TABLE Productos(
 id_producto NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 nombre VARCHAR(40),
@@ -21,6 +26,8 @@ CONSTRAINT fk_Categoria
 FOREIGN KEY (NoCategoria)
 REFERENCES Categorias (id_categoria)
 );
+INSERT INTO Productos(nombre,NoCategoria) values('Lala',1);
+select * from Productos, Categorias;
 
 CREATE TABLE Pedidos(
 id_pedido NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
