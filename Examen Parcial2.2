@@ -1,0 +1,53 @@
+CREATE TABLE Alumnos (
+  alumno_id INT PRIMARY KEY,
+  nombre VARCHAR(50),
+  apellido VARCHAR(50),
+  fecha_nacimiento DATE
+);
+INSERT INTO Alumno (alumno_id, nombre, apellido, Fnacimiento) VALUES(1, 'Pablo', 'Hernandez Mata', '1995-03-14');
+INSERT INTO Alumno (alumno_id, nombre,  apellido, Fnacimiento) VALUES(2, 'Jeremias', 'Santo Lote', '1993-07-12');
+INSERT INTO Alumno (alumno_id, nombre,  apellido, Fnacimiento) VALUES(3, 'Teresa', 'Lomas Trillo', '1989-06-19');
+INSERT INTO Alumno (alumno_id, nombre,  apellido, Fnacimiento) VALUES(4, 'Marta', 'Sergio Fuego Garcia', '1992-11-23');
+INSERT INTO Alumno (alumno_id, nombre,  apellido, Fnacimiento) VALUES(5, 'Sergio', 'Fuego Garcia', '1991-04-21');
+INSERT INTO Alumno (alumno_id, nombre,  apellido, Fnacimiento) VALUES(6, 'Carmen', 'Dilma Perna', '1987-12-04');
+
+CREATE TABLE Curso (
+  curso_id INT PRIMARY KEY,
+  titulo VARCHAR(50),
+  profesor_id INT,
+  FOREIGN KEY (profesor_id) REFERENCES PROFESORES(profesor_id)
+);
+INSERT INTO Alumno (alumno_id, nombre, apellido, Fnacimiento) VALUES(1, 'Programación PHP', 1);
+INSERT INTO Alumno (alumno_id, nombre,  apellido, Fnacimiento) VALUES(2, 'Modelos abstracto de datos', 2);
+INSERT INTO Alumno (alumno_id, nombre,  apellido, Fnacimiento) VALUES(3, 'SQL desde cero', 3);
+INSERT INTO Alumno (alumno_id, nombre,  apellido, Fnacimiento) VALUES(4, 'Dibujo técnico', 4);
+INSERT INTO Alumno (alumno_id, nombre,  apellido, Fnacimiento) VALUES(5, 'SQL avanzado', 5);
+
+CREATE TABLE Profesores (
+  profesor_id INT PRIMARY KEY,
+  nombre VARCHAR(50),
+  apellido VARCHAR(50),
+  fecha_nacimiento DATE
+);
+
+INSERT INTO Profesores (profesor_id, nombre, apellido, fecha_nacimiento) VALUES(1, 'Federico', 'Gasco Daza', '1975-04-23');
+INSERT INTO Profesores (profesor_id, nombre,  apellido, fecha_nacimiento) VALUES(2, 'Ana', '', '1969-08-02');
+INSERT INTO Profesores (profesor_id, nombre,  apellido, fecha_nacimiento) VALUES(3, 'Rosa Honrosa', 'Pérez', '1980-09-05');
+INSERT INTO Profesores (profesor_id, nombre,  apellido, fecha_nacimiento) VALUES(4, 'Carlos', 'Garcia Martinez', '1985-05-24');
+
+
+CREATE TABLE Alumnos_Cursos (
+  alumno_id INT,
+  curso_id INT,
+  PRIMARY KEY (alumno_id, curso_id),
+  FOREIGN KEY (alumno_id) REFERENCES ALUMNOS(alumno_id),
+  FOREIGN KEY (curso_id) REFERENCES CURSOS(curso_id)
+);
+
+INSERT INTO  Alumnos_Cursos (alumno_id, curso_id) VALUES(1, 1);
+INSERT INTO  Alumnos_Cursos (alumno_id, curso_id) VALUES(2, 3);
+INSERT INTO  Alumnos_Cursos (alumno_id, curso_id) VALUES(3, 4);
+INSERT INTO  Alumnos_Cursos (alumno_id, curso_id) VALUES(4, 5);
+INSERT INTO  Alumnos_Cursos (alumno_id, curso_id) VALUES(5, 1);
+INSERT INTO  Alumnos_Cursos (alumno_id, curso_id) VALUES(6, 2);
+
