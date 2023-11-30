@@ -1,0 +1,70 @@
+create table alumnos(
+alum_id NUMBER PRIMARY KEY,
+nombre varchar (30),
+apellido varchar(30),
+f_nac varchar (20)
+);
+
+insert into alumnos (alum_id,nombre,apellido,f_nac)values(1, 'Pablo', 'Hernandez Mata', 1995-03-14);
+insert into alumnos (alum_id,nombre,apellido,f_nac)values(2, 'Jeremias', 'Santo Lote', 1993-07-12);
+insert into alumnos (alum_id,nombre,apellido,f_nac)values(3, 'Teresa', 'Lomas Trillo', 1989-06-19);
+insert into alumnos (alum_id,nombre,apellido,f_nac)values(4, 'Marta', 'Fuego Garcia', 1992-11-23);
+insert into alumnos (alum_id,nombre,apellido,f_nac)values(5, 'Sergio', 'Ot Dirmet', 1991-04-21);
+insert into alumnos (alum_id,nombre,apellido,f_nac)values(6, 'Carmen', 'Dilma Perna', 1987-12-04);
+
+create table cursos_alum(
+rel_alum number,
+rel_cursos number,
+
+
+foreign key (rel_alum)
+references alumnos(alum_id),
+
+foreign key (rel_cursos)
+references cursos(id_cursos)
+);
+
+
+
+insert into cursos_alum(rel_alum,rel_cursos)values(1,1);
+insert into cursos_alum(rel_alum,rel_cursos)values(3,1);
+insert into cursos_alum(rel_alum,rel_cursos)values(5,1);
+insert into cursos_alum(rel_alum,rel_cursos)values(4,2);
+insert into cursos_alum(rel_alum,rel_cursos)values(1,3);
+insert into cursos_alum(rel_alum,rel_cursos)values(5,3);
+insert into cursos_alum(rel_alum,rel_cursos)values(2,4);
+insert into cursos_alum(rel_alum,rel_cursos)values(6,4);
+
+create table profesores(
+prof_id number primary key,
+nombre varchar(30),
+apellido varchar (30),
+f_nac varchar(20)
+);
+
+insert into profesores(prof_id,nombre,apellido,f_nac)values(1,'Federico','Gasco Daza',1975-04-23);
+insert into profesores(prof_id,nombre,apellido,f_nac)values(2,'Ana','Saura Trenzo',1969-08-02);
+insert into profesores(prof_id,nombre,apellido,f_nac)values(3,'Rosa','Honrosa Perez',1980-09-05);
+insert into profesores(prof_id,nombre,apellido,f_nac)values(4,'Carlos','Garcia Martinez',1985-05-24);
+
+create table cursos(
+id_cursos number primary key,
+titulo varchar(20),
+rel_prof number,
+
+
+
+constraint fk_idprof
+foreign key (rel_prof)
+references profesores(prof_id)
+);
+
+insert into cursos(id_cursos,titulo,rel_prof)values(1,'Programacion PHP',3);
+insert into cursos(id_cursos,titulo,rel_prof)values(2,'Modelos abstracto',3);
+insert into cursos(id_cursos,titulo,rel_prof)values(3,'SQL desde cero',1);
+insert into cursos(id_cursos,titulo,rel_prof)values(4,'Dibujo Tecnico',2);
+insert into cursos(id_cursos,titulo)values(5,'SQL avanzado');
+
+--Consulta No.1--
+select * from cursos titulo, profesores Prof where titulo.prof_id = Prof.prof_id;
+
