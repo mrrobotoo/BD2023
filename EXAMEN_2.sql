@@ -1,0 +1,67 @@
+CREATE TABLE PROFESORES (
+ID_PROFE NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+NOMBRE VARCHAR2 (50) NOT NULL,
+APELLIDOS VARCHAR2 (50) NOT NULL,
+F_NACIMIENTO DATE 
+);
+
+CREATE TABLE CURSOS (
+ID_CURSO NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+TITULO VARCHAR2 (50),
+ID_PROFE NUMERIC,
+CONSTRAINT FK_PROFE
+FOREIGN KEY (ID_PROFE)
+REFERENCES PROFESORES (ID_PROFE)
+);
+
+CREATE TABLE ALUMNOS (
+ID_ALUMNO NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+NOMBRE VARCHAR2 (50) NOT NULL,
+APELLIDOS VARCHAR2 (50) NOT NULL,
+F_NACIMIENTO DATE 
+ 
+
+CREATE TABLE ALUMNOS_CURSOS (
+ID_ALUMNO NUMERIC, 
+ID_CURSO NUMERIC,
+
+CONSTRAINT FK_ALUMNO
+FOREIGN KEY (ID_ALUMNO)
+REFERENCES ALUMNOS (ID_ALUMNO),
+CONSTRAINT FK_CURSO
+FOREIGN KEY (ID_CURSO)
+REFERENCES CURSOS (ID_CURSO)
+);
+
+
+ --Crear la consulta que me dé como resultado toda la información que existen entre profesores y los cursos que imparte cada uno.
+select a.ID_CURSO, a.TITULO, a.ID_PROFE, b.ID_PROFE, b.NOMBRE, b.APELLIDOS, b.F_NACIMIENTO
+from CURSOS a
+full outer join PROFESORES b
+on a.ID_CURSO = b.ID_PROFE;
+--Crear la consulta que muestre los cursos y sus profesores, aunque el curso no tenga profesor asignado
+select a.ID_CURSO, a.TITULO, a.ID_PROFE, b.ID_PROFE, b.NOMBRE, b.APELLIDOS, b.F_NACIMIENTO
+from CURSOS a
+full outer join PROFESORES b
+on a.ID_CURSO = b.ID_PROFE
+where a.ID_CURSO is null;
+
+--Crear la consulta que obtenga los alumnos matriculados en cada curso, aunque estos sean 
+SELECT a.titulo, b.ID_ALUMNO, a.ID_CURSO
+FROM CURSOS a
+left join ALUMNOS b
+on a.ID_CURSO = b.ID_ALUMNO;
+--Crear la consulta entre las tablas CURSOS, ALUMNOS y ALUMNOS_CURSOS 
+
+SELECT a.titulo, b.NOMBRE, b.APELLIDOS
+FROM CURSOS a
+left join ALUMNOS_CURSOS
+on a.ID_CURSO = ALUMNOS_CURSOS.ID_CURSO
+left join ALUMNOS b
+on ALUMNOS_CURSOS.ID_ALUMNO = b.ID_ALUMNO;
+
+--Crear la consulta que resuelva el número de cursos que imparte cada profesor usando la cláusula INNER JOIN.
+SELECT a.NOMBRE ,a.APELLIDOS, b.ID_CURSO
+FROM PROFESORES a
+inner join CURSOS b
+on a.ID_PROFE = b.ID_PROFE;
